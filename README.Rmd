@@ -1,0 +1,28 @@
+# Databricks notebook source
+# MAGIC %md # Deep UNet for satellite image segmentation
+# MAGIC 
+# MAGIC ![banner](https://i.imgur.com/hjITfpc.png)!
+# MAGIC 
+# MAGIC ## About this project
+# MAGIC This is a Keras based implementation of a deep UNet that performs satellite image segmentation.
+# MAGIC 
+# MAGIC ## Dataset
+# MAGIC * The dataset consists of 8-band commercial grade satellite imagery taken from SpaceNet dataset.
+# MAGIC * Train collection contains few tiff files for each of the 24 locations.
+# MAGIC * Every location has an 8-channel image containing spectral information of several wavelength channels (red, red edge, coastal, blue, green, yellow, near-IR1 and near-IR2). These files are located in data/mband/ directory.
+# MAGIC * Also available are correctly segmented images of each training location, called mask. These files contain information about 5 different classes: buildings, roads, trees, crops and water (note that original Kaggle contest had 10 classes).
+# MAGIC * Resolution for satellite images s 16-bit. However, mask-files are 8-bit.
+# MAGIC 
+# MAGIC ## Implementation
+# MAGIC * Deep Unet architecture is employed to perform segmentation.
+# MAGIC * Image augmentation is used for input images to significantly increases train data.
+# MAGIC * Image augmentation is also done while testing, mean results are exported to result.tif image.
+# MAGIC ![examples](https://i.imgur.com/34lq5bD.jpg)
+# MAGIC 
+# MAGIC **Note:** Training for this model was done on a Tesla P100-PCIE-16GB GPU.
+# MAGIC 
+# MAGIC ## Prediction Example
+# MAGIC ![prediction example](https://i.imgur.com/CalIxTU.png)
+# MAGIC 
+# MAGIC ## Network architecture
+# MAGIC ![Deep Unet Architecture](https://i.imgur.com/zX1r5Rx.png)
